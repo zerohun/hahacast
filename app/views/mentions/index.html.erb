@@ -1,0 +1,15 @@
+<% title "Mentions" %>
+
+<table>
+  <tr>
+    <th>File</th>
+  </tr>
+  <% for mention in @mentions %>
+    <tr>
+      <td><%= mention.file %></td>
+      <td><%= link_to "Edit", edit_mention_path(mention) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Mention", new_mention_path %></p>
