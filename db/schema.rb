@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203091513) do
+ActiveRecord::Schema.define(:version => 20120216061521) do
 
   create_table "mentions", :force => true do |t|
     t.string   "file"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
   end
 
 end

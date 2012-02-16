@@ -22,8 +22,12 @@ end
 
 gem 'jquery-rails'
 gem 'carrierwave'
+gem 'fog'
+gem 'backbone-on-rails'
+gem 'ancestry'
 
 
+gem 'jasmine', :group => [:development, :test]
 gem "rspec-rails", :group => [:test, :development]
 gem "nifty-generators", :group => :development
 group :test do

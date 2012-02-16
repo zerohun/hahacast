@@ -1,0 +1,10 @@
+Hahacast
+<ul>
+<% for mention in @mentions.models: %>
+  <li>file : <%= mention.get('file').url %></li>
+<% end %>
+</ul>
+<audio controls="controls" id="player">
+  <source id="firstSound"src="" type="audio/mp3" />
+</audio>
+

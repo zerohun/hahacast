@@ -1,0 +1,16 @@
+production:
+  access_key_id: AKIAJQ2VVHU4T7SLKKSQ 
+  secret_access_key: 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
+  bucket: zerohun_forupload 
+  directory: zerohun_forupload
+
+development:
+  access_key_id: AKIAJQ2VVHU4T7SLKKSQ
+  secret_access_key: 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
+  bucket: zerohun_forupload
+  directory: zerohun_forupload
+test:
+  access_key_id: AKIAJQ2VVHU4T7SLKKSQ
+  secret_access_key: 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
+  bucket: zerohun_forupload
+  directory: zerohun_forupload
