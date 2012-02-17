@@ -1,0 +1,15 @@
+<%= link_to "sign up"%>
+<%= link_to "Sign in with twitter", "/auth/twitter" %>
+<%= link_to "Sign in with facebook", "/auth/facebook" %>
+<%= form_tag "/auth/identity/callback" do %>
+  <div class="field">
+    <%= label_tag :auth_key, "Email" %><br>
+    <%= text_field_tag :auth_key %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Login" %></div>
+
+<% end %>

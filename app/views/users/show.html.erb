@@ -1,0 +1,9 @@
+<strong><%= @user.name %></strong>
+<ul>
+<% @user.connetions.each do |connection| %>
+  <li>
+  <%= connection.uid %>
+  <%= connection.provider %>
+  </li>
+<% end %>
+</ul>

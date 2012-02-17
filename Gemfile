@@ -25,6 +25,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'backbone-on-rails'
 gem 'ancestry'
+gem 'devise'
 
 
 gem 'jasmine', :group => [:development, :test]
