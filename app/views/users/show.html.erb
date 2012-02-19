@@ -1,9 +1,6 @@
-<strong><%= @user.name %></strong>
-<ul>
-<% @user.connetions.each do |connection| %>
-  <li>
-  <%= connection.uid %>
-  <%= connection.provider %>
-  </li>
+<%= @user.email %>
+<% if current_user.facebook_uid.present? %>
+  <%= link_to "disconnect to facebook button", disconnect_with_facebook_user_url(current_user) %>
+<% else %>
+  <%= link_to "connect to facebook",  user_omniauth_authorize_path(:facebook) %>
 <% end %>
-</ul>

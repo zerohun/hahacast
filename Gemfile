@@ -26,6 +26,9 @@ gem 'fog'
 gem 'backbone-on-rails'
 gem 'ancestry'
 gem 'devise'
+gem 'omniauth-facebook', '>= 1.0'
+gem 'omniauth-twitter'
+gem 'cancan'
 
 
 gem 'jasmine', :group => [:development, :test]

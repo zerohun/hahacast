@@ -8,6 +8,9 @@
     <tr>
       <td><%= mention.file %></td>
       <td><%= link_to "Edit", edit_mention_path(mention) %></td>
+      <% if mention.user.present? %>
+        <td>author : <%= mention.user.email %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

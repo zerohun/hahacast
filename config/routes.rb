@@ -1,8 +1,15 @@
 Hahacast::Application.routes.draw do
-  devise_for :users
+  get "users/show"
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :mentions
   resources :main
+  resources :users do
+    member do
+      get "disconnect_with_facebook"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

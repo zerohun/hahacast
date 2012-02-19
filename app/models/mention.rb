@@ -3,4 +3,5 @@ class Mention < ActiveRecord::Base
   attr_accessible :file
   mount_uploader :file, SoundUploader
   validates :file,  :presence => true
+  belongs_to :user
 end
