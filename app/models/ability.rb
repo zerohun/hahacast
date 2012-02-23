@@ -27,7 +27,7 @@ class Ability
     can :read, :all
     can [:update, :destory], Mention, :user_id => user.id
     can :reply, Mention do |mention|
-      mention.try(:user_id) == user.id
+#      mention.try(:user_id) == user.id
     end
   end
 end

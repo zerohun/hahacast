@@ -3,14 +3,13 @@ class MentionsController < ApplicationController
   respond_to :json, :except => [:new, :create]
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :destroy]
   def index
-
-    @mentions = Mention.all
-    respond_with Mention.all
-
+    @mentions = Mention.roots
+    respond_with @mentions
   end
 
   def new
-    @mention = current_user.mentions.build
+    @mention = current_user.mentions.build(:parent_id => params[:parent_id])
+    @parent_id = params[:parent_id]
     render :aciton => 'new'
   end
 

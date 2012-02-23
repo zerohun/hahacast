@@ -10,10 +10,11 @@
   <body>
     <header>
       <% if current_user %>
-        <%= link_to current_user.email, current_user %> is logged in
+        <%= link_to current_user.email, user_configuration_path(current_user) %> is logged in
+        <%= link_to "Logout", sign_out_path %>
       <% else %>
         <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-        <%= link_to "Sign in", "/users/sign_in" %>
+        <%= link_to "Sign in", new_user_session_path %>
       <% end %>
     </header> 
     <div id="container">

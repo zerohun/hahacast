@@ -3,6 +3,7 @@
   <p>
     <%= f.label :file %><br />
     <%= f.file_field :file %>
+    <%= f.hidden_field :parent_id %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

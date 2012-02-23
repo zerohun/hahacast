@@ -1,15 +1,19 @@
 Hahacast::Application.routes.draw do
-  get "users/show"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :mentions
-  resources :main
-  resources :users do
-    member do
-      get "disconnect_with_facebook"
-    end
+  as :user do
+    get "user/disconnect_with_facebook", :to => "users#disconnect_with_facebook", :as => :disconnect_with_facebook_user
+    get "users/configuration/:id", :to => "users#show", :as => :user_configuration
+    get "users/sign_out", :to => "devise/sessions#destroy", :as => :sign_out
   end
+
+  resources :main
+  resources :usercasts
+  resources :mentions
+  resources :friendships, :only => [:create, :destroy]
+  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,7 +65,7 @@ Hahacast::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 #  root :to => 'main#index'
-  root :to => "home#index"
+  root :to => "main#index"
 
   # See how all your routes lay out with "rake routes"
 

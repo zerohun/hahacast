@@ -7,10 +7,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_by_facebook_uid(env["uid"])
     if @user.present?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
-      redirect_to mentions
-#      sign_in_and_redirect @user, :event => :authentication
-    else
 
+      sign_in_and_redirect @user, :event => :authentication
+    else
       if current_user.present?
         current_user.facebook_uid = env["uid"]
         current_user.save!
