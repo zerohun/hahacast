@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222083136) do
+ActiveRecord::Schema.define(:version => 20120223145205) do
+
+  create_table "authconnections", :force => true do |t|
+    t.string   "access_token"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+  end
 
   create_table "connections", :force => true do |t|
     t.datetime "created_at", :null => false
