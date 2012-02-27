@@ -30,5 +30,9 @@ class Ability
 #      mention.try(:user_id) == user.id
        user == mention.parent_id.user && (user.is_matched_friend_with? mention.parent_id.user)
     end
+
+    can [:new, :create, :edit ,:update], Profile, :user_id => user.id
+
+
   end
 end
