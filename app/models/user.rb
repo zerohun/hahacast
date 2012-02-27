@@ -8,14 +8,16 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_many :mentions
-
+  has_many :mentions, :dependent => :destroy
   has_many :friendships
   has_many :friends, :through => :friendships
-
   has_many :inverse_friendships, :foreign_key => "friend_id", :class_name => "Friendship"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :authconnections
 
+  def facebook
+    self.authconnections.find_by_provider("facebook")
+  end
 
   def sent_friend_request_to?(user)
     self.friends.include? user

@@ -25,9 +25,10 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     can :read, :all
-    can [:update, :destory], Mention, :user_id => user.id
-    can :reply, Mention do |mention|
+    can [:new, :update, :destory], Mention, :user_id => user.id
+    can :new, :create, Mention do |mention|
 #      mention.try(:user_id) == user.id
+       user == mention.parent_id.user && (user.is_matched_friend_with? mention.parent_id.user)
     end
   end
 end

@@ -2,6 +2,7 @@ class MentionsController < ApplicationController
   respond_to :html
   respond_to :json, :except => [:new, :create]
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :destroy]
+  load_and_authorize_resource
   def index
     @mentions = Mention.roots
     respond_with @mentions
@@ -16,6 +17,7 @@ class MentionsController < ApplicationController
   def create
 #    respond_with Mention.create(params[:mention])
     @mention = current_user.mentions.build(params[:mention])
+    @mention.create_new
     if @mention.save
       redirect_to mentions_url, :notice => "Successfully created mention."
     else
@@ -25,7 +27,7 @@ class MentionsController < ApplicationController
   end
 
   def edit
-    @mention = Mention.find(params[:id])
+#    @mention = Mention.find(params[:id])
   end
 
   def update

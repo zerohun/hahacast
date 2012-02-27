@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223145205) do
+ActiveRecord::Schema.define(:version => 20120226154914) do
 
   create_table "authconnections", :force => true do |t|
     t.string   "access_token"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120223145205) do
     t.integer  "friend_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "matched"
   end
 
   create_table "mentions", :force => true do |t|
@@ -41,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20120223145205) do
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
     t.integer  "user_id"
+  end
+
+  create_table "news", :force => true do |t|
+    t.integer  "informable_id"
+    t.string   "informable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

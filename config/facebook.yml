@@ -1,0 +1,11 @@
+production:
+  :app_id: 109782095816381
+  :app_secret: 9a1853c3626f4f925142e403ac05bc5b
+
+development:
+  :app_id: 109782095816381
+  :app_secret: 9a1853c3626f4f925142e403ac05bc5b
+
+test:
+  :app_id: 109782095816381
+  :app_secret: 9a1853c3626f4f925142e403ac05bc5b

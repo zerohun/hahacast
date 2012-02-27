@@ -12,8 +12,6 @@ gem 'sqlite3'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
@@ -25,11 +23,11 @@ gem 'carrierwave'
 gem 'fog'
 gem 'backbone-on-rails'
 gem 'ancestry'
-gem 'devise'
+gem 'devise',           '~> 2.0.0'
+gem 'devise_invitable', '~> 1.0.0'
 gem 'omniauth-facebook', '>= 1.0'
 gem 'omniauth-twitter'
 gem 'cancan'
-
 
 gem 'jasmine', :group => [:development, :test]
 gem "rspec-rails", :group => [:test, :development]

@@ -1,6 +1,7 @@
 <%= @user.email %>
-<% if current_user.facebook_uid.present? %>
-  <%= link_to "disconnect to facebook button", disconnect_with_facebook_user_url(current_user) %>
+<% if current_user.authconnections.find_by_provider("facebook").present? %>
+  <%= link_to "disconnect to facebook button", disconnect_with_facebook_user_url(:id => current_user.id) %>
 <% else %>
   <%= link_to "connect to facebook",  user_omniauth_authorize_path(:facebook) %>
 <% end %>
+<%= link_to "friend list", "https://graph.facebook.com/me/friends?fields=id,name,picture&access_token=#{@user.facebook.access_token}" %>

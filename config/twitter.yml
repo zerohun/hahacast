@@ -1,0 +1,11 @@
+production:
+  :app_id: QMlGu0oxEwPCLHj1KOcv4g
+  :app_secret: 32Gl3rmnFOgof9K1Y58fjXt4PflZJbuydtU5SdPkcg
+
+development:
+  :app_id: QMlGu0oxEwPCLHj1KOcv4g
+  :app_secret: 32Gl3rmnFOgof9K1Y58fjXt4PflZJbuydtU5SdPkcg
+
+test:
+  :app_id: QMlGu0oxEwPCLHj1KOcv4g
+  :app_secret: 32Gl3rmnFOgof9K1Y58fjXt4PflZJbuydtU5SdPkcg
