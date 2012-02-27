@@ -2,6 +2,7 @@ class MentionsController < ApplicationController
   respond_to :html
   respond_to :json, :except => [:new, :create]
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :destroy]
+  before_filter :assure_to_have_a_profile
   load_and_authorize_resource
   def index
     @mentions = Mention.roots

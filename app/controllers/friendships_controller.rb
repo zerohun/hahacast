@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :assure_to_have_a_profile
 
   def index
     @friendships = Friendship.find_by_user_id(current_user.id)

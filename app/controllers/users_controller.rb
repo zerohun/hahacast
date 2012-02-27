@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+
   #def edit
     #@user = User.find(params[:id])
     #if current_user != @user

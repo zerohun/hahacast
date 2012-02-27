@@ -4,7 +4,5 @@ class Mention < ActiveRecord::Base
   mount_uploader :file, SoundUploader
   validates :file,  :presence => true
   belongs_to :user
-
   has_one :new, :as => :informable, :dependent => :destroy
-
 end

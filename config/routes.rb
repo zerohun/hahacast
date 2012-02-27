@@ -1,5 +1,9 @@
 Hahacast::Application.routes.draw do
 
+  resources :profiles
+
+  get "profiles/edit"
+
   get "news/index"
 
   get "newsfeed/index"

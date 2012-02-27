@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226154914) do
+ActiveRecord::Schema.define(:version => 20120227151531) do
 
   create_table "authconnections", :force => true do |t|
     t.string   "access_token"
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(:version => 20120226154914) do
     t.string   "informable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "about"
+    t.string   "location"
+    t.string   "website"
+    t.string   "picture"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

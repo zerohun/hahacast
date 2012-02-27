@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :authconnections
 
+  has_one :profile
+
+
   def facebook
     self.authconnections.find_by_provider("facebook")
   end
