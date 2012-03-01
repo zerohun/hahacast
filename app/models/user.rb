@@ -14,8 +14,15 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :foreign_key => "friend_id", :class_name => "Friendship"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :authconnections
+  has_many :usercasts
 
   has_one :profile
+  after_create :create_usercast
+
+  def name
+    profile = self.profile
+    profile.first_name + " " + profile.last_name
+  end
 
 
   def facebook
@@ -33,5 +40,14 @@ class User < ActiveRecord::Base
   def is_matched_friend_with?(user)
     sent_friend_request_to?(user) && got_friend_request_from?(user)
   end
+
+
+  private
+  def create_usercast
+    self.usercasts.build
+  end
+
+
+
 
 end

@@ -18,6 +18,7 @@ Hahacast::Application.routes.draw do
 
   resources :main
   resources :usercasts
+
   resources :mentions
   resources :friendships, :only => [:create, :destroy]
   resources :news

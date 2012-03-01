@@ -22,6 +22,6 @@
   <%= render_tree(mention) %>
 <% end %>
 
-<% if current_user.present? && current_user == @user %>
-  <p><%= link_to "New Mention", new_mention_path %></p>
+<% if can_create_mention_from? @usercast %>
+  <p><%= link_to "New Mention", new_mention_path(:usercast_id => @usercast.id) %></p>
 <% end %>

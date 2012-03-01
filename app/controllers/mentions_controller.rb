@@ -1,26 +1,24 @@
 class MentionsController < ApplicationController
   respond_to :html
   respond_to :json, :except => [:new, :create]
-  before_filter :authenticate_user!, :only => [:new, :create, :edit, :destroy]
-  before_filter :assure_to_have_a_profile
+  before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource
-  def index
-    @mentions = Mention.roots
-    respond_with @mentions
-  end
+
 
   def new
-    @mention = current_user.mentions.build(:parent_id => params[:parent_id])
-    @parent_id = params[:parent_id]
+    @mention = current_user.mentions.build(:parent_id => params[:parent_id], 
+                                           :usercast_id => params[:usercast_id])
+    authorize_create_mention!(@mention.usercast)
     render :aciton => 'new'
   end
 
   def create
 #    respond_with Mention.create(params[:mention])
     @mention = current_user.mentions.build(params[:mention])
-    @mention.create_new
+    authorize_create_mention!(@mention.usercast)
     if @mention.save
-      redirect_to mentions_url, :notice => "Successfully created mention."
+      @mention.create_new!
+      redirect_to @mention.usercast, :notice => "Successfully created mention."
     else
       render :action => 'new'
 
@@ -40,4 +38,11 @@ class MentionsController < ApplicationController
     #end
     respond_with Mention.destory(params[:id])
   end
+
+  def show
+    @mention = Mention.where(:id => params[:id]).first
+    @root_mention = @mention.root
+  end
+
+
 end

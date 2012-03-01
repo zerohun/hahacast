@@ -1,10 +1,11 @@
-<div class="mention" data-depth="<%= depth %>">
-  <% if depth > 0 %>
+<div id="mention_#{mentino.id}" class="mention" data-depth="<%= mention.depth %>">
+  <% if mention.depth > 0 %>
     ->
   <% end %>
   <%= mention.file %> 
+  <%= mention.created_at %>
   <%= link_to "Edit", edit_mention_path(mention) %>
-  <%= link_to "Reply", new_mention_path(:parent_id => mention.id) %>
+  <%= link_to "Reply", new_mention_path(:parent_id => mention.id, :usercast_id => mention.usercast.id) %>
   <% if mention.user.present? %>
     author : <%= mention.user.email %>
   <% end %>

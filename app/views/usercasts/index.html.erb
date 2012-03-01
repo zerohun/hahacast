@@ -1,7 +1,7 @@
 <h1>Usercasts#index</h1>
 <p>Find me in app/views/usercasts/index.html.erb</p>
-<% for user in @users %>
+<% for usercast in @usercasts %>
   <div>
-    <%= link_to user.email, usercast_path(user.id) %>
+    <%= link_to usercast.user.name, usercast %>
   </div>
 <% end %>

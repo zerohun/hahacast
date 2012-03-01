@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
 
   before_filter :authenticate_user!
-  before_filter :assure_to_have_a_profile, :only => [:edit, :update,:destroy]
   before_filter :find_current_user_profile
   def index
     respond_to do |format|

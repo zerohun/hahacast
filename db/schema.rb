@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227151531) do
+ActiveRecord::Schema.define(:version => 20120228132932) do
 
   create_table "authconnections", :force => true do |t|
     t.string   "access_token"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(:version => 20120227151531) do
 
   create_table "mentions", :force => true do |t|
     t.string   "file"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "ancestry"
     t.integer  "user_id"
+    t.integer  "usercast_id"
   end
 
   create_table "news", :force => true do |t|
@@ -62,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20120227151531) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+  end
+
+  create_table "usercasts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

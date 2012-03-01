@@ -1,14 +1,14 @@
 class UsercastsController < ApplicationController
   respond_to :html, :json
   def index
-    @users = User.all
-    respond_with @users
+    @usercasts = Usercast.all
+    respond_with @usercasts
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    throw "no user is found"if @user.blank?
-    @mentions = @user.mentions.roots
-    respond_with @mentions
+    @usercast = Usercast.where(:id => params[:id]).first
+    @user = @usercast.user
+    @mentions = @usercast.mentions.roots
+    respond_with @usercast
   end
 end

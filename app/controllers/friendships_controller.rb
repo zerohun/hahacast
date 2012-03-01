@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :assure_to_have_a_profile
 
   def index
     @friendships = Friendship.find_by_user_id(current_user.id)
@@ -10,14 +9,15 @@ class FriendshipsController < ApplicationController
   def create
     user = User.find_by_id(params[:user_id])
     friendship = user.friendships.build(:friend_id => params[:friend_id])
-    friendship.create_new
     if friendship.matched_inverse.present?
       friendship.matched = true
       friendship.matched_inverse.matched = true
       friendship.matched_inverse.save
+
     end
 
-    if friendship.save
+    if friendship.save 
+      friendship.create_new!
       flash[:message] = "friend request is made successfully"
     else
       flash[:message] = "friend request is failed"

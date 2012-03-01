@@ -1,3 +1,14 @@
 <h1>News#index</h1>
 <p>Find me in app/views/news/index.html.erb</p>
-<%= render :partial => "new", :collection => @news %>
+<% @news.each do |new| %>
+  <div class="new">
+    <% if new.informable_type == "Mention" %>
+      <%= link_to new.notify_text, new.informable %>
+    <% end %>
+    <% if new.informable_type == "Friendship" %>
+      <%= link_to new.informable.user.name, new.informable.user.usercasts.first %> 
+      is friend with
+      <%= link_to new.informable.friend.name, new.informable.friend.usercasts.first %>
+    <% end %>
+  </div>
+<% end %>
