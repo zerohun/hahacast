@@ -25,6 +25,12 @@ Hahacast::Application.routes.draw do
   resources :friendships, :only => [:create, :destroy]
   resources :news
   
+  namespace :api do
+    namespace :v1 do
+      resources :tokens, :only => [:create, :destroy]
+    end
+  end
+  
 
 
   # The priority is based upon order of creation:

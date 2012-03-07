@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -41,13 +41,9 @@ class User < ActiveRecord::Base
     sent_friend_request_to?(user) && got_friend_request_from?(user)
   end
 
-
   private
   def create_usercast
     self.usercasts.build
   end
-
-
-
 
 end
