@@ -1,0 +1,14 @@
+<% if @usercast.get('mentions'): %>
+  <% count = 0 %>
+  <% for mention in @usercast.get('mentions'): %>
+    <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>">
+    <% indent = "" %>
+    <% indent += "->" for num in [0..mention.depth] %>
+    <%= indent %>file : <%= mention.file.url %>
+    </div>
+    <% count++ %>
+  <% end %>
+  <audio controls="controls" id="player">
+    <source src="" type="audio/mp3"/>
+  </audio>
+<% end %>

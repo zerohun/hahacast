@@ -18,9 +18,7 @@
   <% end %>
 <% end %>
 
-<% for mention in @mentions %>
-  <%= render_tree(mention) %>
-<% end %>
+<%= render_tree(@usercast) %>
 
 <% if can_create_mention_from? @usercast %>
   <p><%= link_to "New Mention", new_mention_path(:usercast_id => @usercast.id) %></p>

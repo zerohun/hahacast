@@ -1,0 +1,7 @@
+Hahacast
+<ul>
+<% for usercast in @usercasts.models: %>
+  <li><a href="/#usercasts/<%= usercast.get("id") %>"><%= usercast.get("user_name") %>'s cast</a></li>
+<% end %>
+</ul>
+

@@ -4,6 +4,12 @@ class MentionsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource
 
+  def index
+    usercast = Usercast.where(:id => params[:usercast_id]).first
+    @mentions = usercast.tree_sorted_mentions
+    respond_with @mentions
+  end
+
 
   def new
     @mention = current_user.mentions.build(:parent_id => params[:parent_id], 
@@ -43,6 +49,5 @@ class MentionsController < ApplicationController
     @mention = Mention.where(:id => params[:id]).first
     @root_mention = @mention.root
   end
-
 
 end

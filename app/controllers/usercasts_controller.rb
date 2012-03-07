@@ -1,14 +1,11 @@
 class UsercastsController < ApplicationController
-  respond_to :html, :json
   def index
-    @usercasts = Usercast.all
-    respond_with @usercasts
+    @usercasts = Usercast.all 
   end
 
   def show
     @usercast = Usercast.where(:id => params[:id]).first
     @user = @usercast.user
-    @mentions = @usercast.mentions.roots
-    respond_with @usercast
+    @mentions = @usercast.tree_sorted_mentions
   end
 end

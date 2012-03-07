@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   #render data store by tree sructrure.
   #ancestry gem is reuqired
   #def render_tree(root_node, partial = nil)
@@ -17,7 +16,7 @@ module ApplicationHelper
     #html.html_safe
   #end 
   def render_tree(root_node, options = {})
-    sorted_node = root_node.sort_by_depth_first
+    sorted_node = root_node.tree_sorted_mentions
     html = ""
     sorted_node.each do |node|
       html += (render :partial => node, :locals => options)

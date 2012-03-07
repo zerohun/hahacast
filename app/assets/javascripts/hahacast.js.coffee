@@ -4,7 +4,7 @@ window.Hahacast =
   Views: {}
   Routers: {}
   init: -> 
-    new Hahacast.Routers.Mentions()
+    new Hahacast.Routers.Usercasts()
     Backbone.history.start()
 
 
