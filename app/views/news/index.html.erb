@@ -3,7 +3,7 @@
 <% @news.each do |new| %>
   <div class="new">
     <% if new.informable_type == "Mention" %>
-      <%= link_to new.notify_text, new.informable %>
+      <%= link_to new.notify_text, new.informable.usercast %>
     <% end %>
     <% if new.informable_type == "Friendship" %>
       <%= link_to new.informable.user.name, new.informable.user.usercasts.first %> 

@@ -16,6 +16,8 @@ Hahacast::Application.routes.draw do
     resources :mentions
   end
 
+  resources :mentions
+
   resources :friends, :only => [:index]
 
 
