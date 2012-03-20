@@ -16,9 +16,10 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass', '~> 2.0.1'
+
   #gem 'twitter-bootstrap-rails'
 end
+gem 'bootstrap-sass', '~> 2.0.1'
 
 gem 'jquery-rails'
 gem 'carrierwave'
