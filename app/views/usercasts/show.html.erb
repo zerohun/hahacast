@@ -1,25 +1,12 @@
-<H1><%= @user.email %> casts</H1>
-<% if current_user && current_user != @user %>
+<h1>Usercast</h1>
 
-  <% if current_user.is_matched_friend_with? @user %>
-    friend 
-  <% elsif current_user.sent_friend_request_to? @user %>
-    waiting for friend approval
-  <% elsif current_user.got_friend_request_from? @user %>
-    <%= @user.email %> sent you friend request. will you approve?
-    <%= link_to "yes", friendships_path(:user_id => current_user.id, :friend_id => @user.id), :method => :post %>
-    <% friendship = @user.friendships.find(:first, :conditions => {:friend_id => current_user.id})%>
-    <%= link_to "no", friendship, :method => :delete %>
+<p>
+  <b>User</b><br>
+  <%= @usercast.user_id %>
+</p>
 
-  <% elsif current_user.is_matched_friend_with? @user %>
-    friend 
-  <% else %>
-    <%= link_to "add as friend", friendships_path(:user_id => current_user.id, :friend_id => @user.id), :method => :post %>
-  <% end %>
-<% end %>
-
-<%= render_tree(@usercast) %>
-
-<% if can_create_mention_from? @usercast %>
-  <p><%= link_to "New Mention", new_mention_path(:usercast_id => @usercast.id) %></p>
-<% end %>
+<div class="form-actions">
+  <%= link_to 'Back', usercasts_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_usercast_path(@usercast), :class => 'btn' %>
+  <%= link_to 'Delete', usercast_path(@usercast), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

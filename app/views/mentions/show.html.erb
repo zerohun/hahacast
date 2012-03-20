@@ -1,2 +1,27 @@
-Conversation started at <%= @root_mention.created_at %>
-<%= render_tree(@root_mention, {:stress => @mention.id}) %>
+<h1>Mention</h1>
+
+<p>
+  <b>File</b><br>
+  <%= @mention.file %>
+</p>
+
+<p>
+  <b>Ancestry</b><br>
+  <%= @mention.ancestry %>
+</p>
+
+<p>
+  <b>User</b><br>
+  <%= @mention.user_id %>
+</p>
+
+<p>
+  <b>Usercast</b><br>
+  <%= @mention.usercast_id %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', mentions_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_mention_path(@mention), :class => 'btn' %>
+  <%= link_to 'Delete', mention_path(@mention), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -16,6 +16,8 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass', '~> 2.0.1'
+  #gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
@@ -44,7 +46,7 @@ end
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
-
+gem 'gon'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -53,5 +55,4 @@ gem 'jbuilder'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
 gem "mocha", :group => :test

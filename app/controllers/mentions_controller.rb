@@ -1,5 +1,6 @@
 class MentionsController < ApplicationController
   respond_to :html
+  respond_to :mobile, :only => :new
   respond_to :json, :except => [:new, :create]
   before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource

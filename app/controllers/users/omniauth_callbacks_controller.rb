@@ -2,7 +2,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     env = request.env["omniauth.auth"]
-    puts env.to_s
 #    @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
     auth_connection = Authconnection.find(:first, :conditions => {:provider => "facebook", :uid => env["uid"]})
 

@@ -3,7 +3,6 @@ class Usercast < ActiveRecord::Base
   has_many :mentions
 
   require "#{Rails.root}/lib/tree_sort.rb"
-
   def tree_sorted_mentions
     sorted_mentions = []
     self.mentions.roots.each do |root_mention|

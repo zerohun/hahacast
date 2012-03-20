@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :authconnections
   has_many :usercasts
-
   has_one :profile
   after_create :create_usercast
 
@@ -41,9 +40,13 @@ class User < ActiveRecord::Base
     sent_friend_request_to?(user) && got_friend_request_from?(user)
   end
 
+  def matched_friends
+    self.friends.includes(:friendships).where("friendships.matched=?", true).all +
+      self.inverse_friends.includes(:friendships).where("friendships.matched=?", true)
+  end
+
   private
   def create_usercast
     self.usercasts.build
   end
-
 end

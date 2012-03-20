@@ -1,0 +1,9 @@
+
+
+Friendlist 
+
+<% @friends.each do |friend| %>
+  <div class="friend_list">
+    <%= link_to friend.name, friend.usercasts.first %> 
+  </div>
+<% end %>

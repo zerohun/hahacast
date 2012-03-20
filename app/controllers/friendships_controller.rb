@@ -1,9 +1,12 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
+  respond_to :html
+  respond_to :json
 
   def index
-    @friendships = Friendship.find_by_user_id(current_user.id)
-    @inverse_friendships = Friendship.find_by_friend_id(current_user.id) 
+#    @friendships = Friendship.where(:id => current_user.id)
+    @inverse_friendships = Friendship.where(:id => current_user.id, :matched => true)
+    respond_with @inverse_friendships
   end
 
   def create
@@ -13,7 +16,6 @@ class FriendshipsController < ApplicationController
       friendship.matched = true
       friendship.matched_inverse.matched = true
       friendship.matched_inverse.save
-
     end
 
     if friendship.save 
@@ -22,6 +24,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:message] = "friend request is failed"
     end
+
     redirect_to usercasts_path
   end
 

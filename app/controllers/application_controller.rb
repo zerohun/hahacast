@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :assure_to_have_a_profile
-  helper_method :can_create_mention_from?
+  before_filter :prepare_for_mobile
+  helper_method :can_create_mention_from
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied."
@@ -48,5 +49,17 @@ class ApplicationController < ActionController::Base
      end
   end
 
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+
+  def prepare_for_mobile
+      session[:mobile_param] = params[:mobile] if params[:mobile]
+      request.format = :mobile if mobile_device?
+  end
 
 end

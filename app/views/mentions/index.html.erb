@@ -1,7 +1,26 @@
-<% title "Mentions" %>
+<h1>Mentions</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>File</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mentions.each do |mention| %>
+      <tr>
+        <td><%= mention.id %></td>
+        <td><%= link_to mention.file, mention_path(mention) %></td>
+        <td><%= mention.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_mention_path(mention), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', mention_path(mention), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% for mention in @mentions %>
-  <%= render_tree(mention) %>
-<% end %>
-
-<p><%= link_to "New Mention", new_mention_path %></p>
+<%= link_to 'New', new_mention_path, :class => 'btn btn-primary' %>

@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12,14 +13,22 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require bootstrap_1
 //= require underscore
 //= require backbone
 //= require hahacast
+//= require cordova-1.5.0.js
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree ./lib
 //= require_tree .
 //= require_tree ./onready_initializers
+//= require_tree ./lib
+
+$(document).ready(function(){
+   // Your code here
+ });
+

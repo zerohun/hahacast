@@ -1,10 +1,44 @@
-<%= form_for @mention do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :file %><br />
-    <%= f.file_field :file %>
-    <%= f.hidden_field :parent_id %>
-    <%= f.hidden_field :usercast_id %>
-  </p>
-  <p><%= f.submit %></p>
+
+<%= form_for @mention, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Mention</legend>
+
+    <div class="control-group">
+      <%= f.label :file, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :file, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :ancestry, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :ancestry, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :user_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :user_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :usercast_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :usercast_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', mentions_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>
+
+<div id="recorder">
+</div>
+

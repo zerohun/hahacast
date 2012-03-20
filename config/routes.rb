@@ -1,13 +1,8 @@
 Hahacast::Application.routes.draw do
 
+  get "friends/index"
+
   resources :profiles
-
-  get "profiles/edit"
-
-  get "news/index"
-
-  get "newsfeed/index"
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   as :user do
@@ -21,8 +16,11 @@ Hahacast::Application.routes.draw do
     resources :mentions
   end
 
-  resources :mentions
-  resources :friendships, :only => [:create, :destroy]
+  resources :friends, :only => [:index]
+
+
+#  resources :mentions
+  resources :friendships, :only => [:index, :create, :destroy]
   resources :news
   
   namespace :api do

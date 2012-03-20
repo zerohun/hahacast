@@ -1,7 +1,26 @@
-<h1>Usercasts#index</h1>
-<p>Find me in app/views/usercasts/index.html.erb</p>
-<% for usercast in @usercasts %>
-  <div>
-    <%= link_to usercast.user.name, usercast %>
-  </div>
-<% end %>
+<h1>Usercasts</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @usercasts.each do |usercast| %>
+      <tr>
+        <td><%= usercast.id %></td>
+        <td><%= link_to usercast.user_id, usercast_path(usercast) %></td>
+        <td><%= usercast.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_usercast_path(usercast), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', usercast_path(usercast), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_usercast_path, :class => 'btn btn-primary' %>
