@@ -5,8 +5,11 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 
-gem 'pg', :group => :production
 gem 'sqlite3', :group => [:test, :development]
 # Gems used only for assets and not required
 # in production environments by default.
@@ -59,3 +62,4 @@ gem 'gon'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 gem "mocha", :group => :test
+
