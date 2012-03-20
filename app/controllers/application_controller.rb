@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def assure_to_have_a_profile
-    if current_user.present? && self.class != ProfilesController
+    if current_user.present?
       if current_user.profile.blank?
         redirect_to new_profile_path
       end
