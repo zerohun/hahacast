@@ -1,5 +1,4 @@
 @onDeviceReady =->
-  alert "ready!"
   registerAudioRecordingEvents()
   #registerAudioPlayEvents()
 

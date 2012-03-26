@@ -26,7 +26,7 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
 
   indentByDepth: ->
     $("div.playlist").each((index,element)->
-      margin = Number($(element).data("depth")) * 10
+      margin = Number($(element).data("depth")) * 20
       $(element).css("margin-left", "#{margin}px")
     )
 
