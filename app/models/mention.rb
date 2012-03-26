@@ -8,6 +8,14 @@ class Mention < ActiveRecord::Base
   has_one :new, :as => :informable, :dependent => :destroy
   after_create :notify_to_news_feed
 
+  def user_name
+    self.user.name
+  end
+  
+  def user_image
+    self.user.profile.picture
+  end
+
   def sort_by_depth_first
     stack = []
     result = []

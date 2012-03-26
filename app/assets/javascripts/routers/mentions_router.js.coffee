@@ -11,7 +11,7 @@ class Hahacast.Routers.Mentions extends Backbone.Router
 
   index: ->
     view = new Hahacast.Views.MentionsIndex(collection: @collection)
-    $('#container').html(view.render().el)
+    $('#main-content').html(view.render().el)
 
     
 
@@ -19,7 +19,7 @@ class Hahacast.Routers.Mentions extends Backbone.Router
     alert id
 
   new: ->
-    $('#container').html('aaaaa')
+    $('#main-content').html('aaaaa')
 
 
 

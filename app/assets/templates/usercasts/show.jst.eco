@@ -1,14 +1,20 @@
-<% if @usercast.get('mentions'): %>
-  <% count = 0 %>
-  <% for mention in @usercast.get('mentions'): %>
-    <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>">
-    <% indent = "" %>
-    <% indent += "->" for num in [0..mention.depth] %>
-    <%= indent %>file : <%= mention.file.url %>
-    </div>
-    <% count++ %>
-  <% end %>
-  <audio controls="controls" id="player">
-    <source src="" type="audio/mp3"/>
-  </audio>
+<% if @usercast.get('user'): %>
+  <H1 class="page-title"><%= @usercast.get('user').name %>'s Channel</H1>
 <% end %>
+<a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
+<div class="mention-list">
+  <% if @usercast.get('mentions'): %>
+    <% count = 0 %>
+
+    <% for mention in @usercast.get('mentions'): %>
+      <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>">
+        <button class="btn audioPlayButton"> <%= mention.user_name %> at <%= mention.created_at %>&nbsp;&nbsp;PLAY</button>
+        <a class="btn" href="/usercasts/<%= @usercast.get('id') %>/mentions/new?parent_id=<%= mention.id %>"> Reply </a>
+        <button class="btn"> Delete </button>
+      </div>
+      <% count++ %>
+    <% end %>
+  <% end %>
+</div>
+<div id="audioPlayer">
+</div>

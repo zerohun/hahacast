@@ -7,22 +7,34 @@
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
-  <body id="mobile">
-    <header>
-      <% if current_user %>
-        <%= link_to current_user.email, user_configuration_path(current_user) %> is logged in
-        <%= link_to "Logout", sign_out_path %>
-      <% else %>
-        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-        <%= link_to "Sign in", new_user_session_path %>
-      <% end %>
-    </header> 
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="container-fluid">
+
+        <div class="nav">
+          <ul class="nav">
+            <li><a class="brand" href="/">Hahacast</a></li>
+            <% if current_user %>
+              <li><%= link_to current_user.email, user_configuration_path(current_user) %></li>
+              <li><%= link_to "Logout", sign_out_path %></li>
+            <% else %>
+              <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="main">
+      <div class="row">
+        <div class="span3">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <% end %>
+          <%= content_tag :h1, yield(:title) if show_title? %>
+        <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

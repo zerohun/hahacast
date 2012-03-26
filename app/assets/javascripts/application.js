@@ -13,8 +13,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require bootstrap_1
 //= require underscore
 //= require backbone
 //= require hahacast
@@ -26,7 +24,10 @@
 //= require_tree ./routers
 //= require_tree .
 //= require_tree ./onready_initializers
+//= require_tree ./ondevice_initializers
 //= require_tree ./lib
+//= require bootstrap
+//= require bootstrap_1
 
 $(document).ready(function(){
    // Your code here

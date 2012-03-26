@@ -11,7 +11,6 @@ class Hahacast.SoundPlayer
         event.data.context.playNext()
       )
 
-
   setTrack: (num)->
     @currentPlaying = num
 

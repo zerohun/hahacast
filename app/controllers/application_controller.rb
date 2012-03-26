@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :assure_to_have_a_profile
-  before_filter :prepare_for_mobile
+#  before_filter :prepare_for_mobile
   helper_method :can_create_mention_from
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|

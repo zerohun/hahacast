@@ -1,7 +1,17 @@
-Hahacast
-<ul>
-<% for usercast in @usercasts.models: %>
-  <li><a href="/#usercasts/<%= usercast.get("id") %>"><%= usercast.get("user_name") %>'s cast</a></li>
-<% end %>
-</ul>
+<H1>Channels</H1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
 
+    <% for usercast in @usercasts.models: %>
+      <tr>
+        <td>
+          <a href="#usercasts/<%= usercast.get('id') %>"><%= usercast.get("user_name") %></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

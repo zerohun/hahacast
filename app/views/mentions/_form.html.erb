@@ -7,29 +7,9 @@
     <div class="control-group">
       <%= f.label :file, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :file, :class => 'text_field' %>
+        <%= f.file_field :file, :class => 'text_field' %>
       </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :ancestry, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :ancestry, :class => 'text_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :user_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :user_id, :class => 'number_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :usercast_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :usercast_id, :class => 'number_field' %>
-      </div>
+      <%= f.hidden_field :usercast_id, :class => 'number_field' %>
     </div>
 
     <div class="form-actions">

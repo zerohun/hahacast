@@ -16,6 +16,9 @@ class MentionsController < ApplicationController
     @mention = current_user.mentions.build(:parent_id => params[:parent_id], 
                                            :usercast_id => params[:usercast_id])
     authorize_create_mention!(@mention.usercast)
+    gon.parent_id = params[:parent_id] if params[:parent_id]
+    gon.usercast_id = @mention.usercast_id 
+    gon.auth_token = current_user.authentication_token
     render :aciton => 'new'
   end
 

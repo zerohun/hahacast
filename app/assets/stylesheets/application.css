@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
 */
+
+div.playlist{
+  border-width: 1px;
+  border-style: solid;
+  border-color: #CCC;
+  padding: 10px;
+  width: 300px;
+  text-align: center
+
+
+}
+div.mention-list{
+  margin-top: 50px;
+}
+
+div.playing{
+  background-color: #FF9966;
+}

@@ -1,6 +1,5 @@
 $(document).ready(->
   if $("#recorder").length > 0
-    alert "init"
     settings = 		
      'recorderlayout_id' : 'flashrecarea'
      'recorder_id' : 'audiorecorder'
@@ -22,5 +21,4 @@ $(document).ready(->
      'callback_activityLevel' : (level)->
 
     $.jRecorder(settings, $("#recorder"))
-
 )
