@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
-
   before_filter :authenticate_user!
   skip_after_filter :assure_to_have_a_profile
   def index
