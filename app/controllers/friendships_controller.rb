@@ -1,5 +1,7 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :assure_to_have_a_profile
+
   respond_to :html
   respond_to :json
 

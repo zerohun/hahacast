@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
 
   before_filter :authenticate_user!
-  before_filter :find_current_user_profile
+  skip_after_filter :assure_to_have_a_profile
   def index
     respond_to do |format|
       format.html # index.html.erb
