@@ -5,20 +5,20 @@ playInterval = null
     #    alert "play!"
     currentPlaying = 0
     $(".audioPlayButton").click((event)->
-      # alert "play button"
+      alert "play button"
       entry = $(this).parent()
       index = Number(entry.attr("id"))
       playList(index)
     )
 
 @playList = (index)->
-  #  alert index
+  alert index
   if playInterval && typeof(playInterval) != "undefined"
     clearInterval(playInterval)
     playInterval = null
 
   if mediaPlayer && typeof(playInterval) != "undefined"
-    # alert "its not null"
+    #alert "its not null"
     mediaPlayer.stop()
     mediaPlayer.release()
     mediaPlayer = null

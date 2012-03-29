@@ -17,7 +17,6 @@ Hahacast::Application.routes.draw do
   end
 
   resources :mentions
-
   resources :friends, :only => [:index]
 
 
@@ -30,6 +29,9 @@ Hahacast::Application.routes.draw do
       resources :tokens, :only => [:create, :destroy]
     end
   end
+
+
+  resources :users, :only => :show
   
 
 

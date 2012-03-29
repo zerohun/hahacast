@@ -36,7 +36,7 @@ playInterval = null
       $("#message").html(params.authenticity_token)
       options.params = params
       ft = new FileTransfer()
-      ft.upload("/mnt/sdcard/myrecording.3gp", "http://192.168.1.2:3000/usercasts/1/mentions", 
+      ft.upload("/mnt/sdcard/myrecording.3gp", "http://192.168.35.35:3000/usercasts/1/mentions", 
         onUploadSuccess, onUploadFail, options) 
 
       $("#message").html("after upload")

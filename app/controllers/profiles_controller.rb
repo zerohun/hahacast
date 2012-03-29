@@ -1,8 +1,10 @@
 class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
+  #
+  skip_before_filter :assure_to_have_a_profile
   before_filter :authenticate_user!
-  skip_after_filter :assure_to_have_a_profile
+
   def index
     respond_to do |format|
       format.html # index.html.erb
