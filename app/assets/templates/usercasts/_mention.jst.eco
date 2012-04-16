@@ -1,0 +1,11 @@
+<% if @usercast.get('mentions'): %>
+  <% count = (@usercast.get('page_number')) * 5 %>
+  <% for mention in @usercast.get('mentions'): %>
+    <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>">
+      <button class="btn audioPlayButton"> <%= mention.user_name %> at <%= mention.created_at %>&nbsp;&nbsp;PLAY</button>
+      <a class="btn" href="/usercasts/<%= @usercast.get('id') %>/mentions/new?parent_id=<%= mention.id %>"> Reply </a>
+      <button class="btn"> Delete </button>
+    </div>
+    <% count++ %>
+  <% end %>
+<% end %>

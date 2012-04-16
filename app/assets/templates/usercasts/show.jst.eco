@@ -15,7 +15,7 @@
   <% end %>
 </div>
 
-<div class="mention-list">
+<div class="mention-list" data-page_state="">
   <% if @usercast.get('mentions'): %>
     <% count = 0 %>
     <% for mention in @usercast.get('mentions'): %>

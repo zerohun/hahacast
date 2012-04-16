@@ -3,12 +3,14 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
 
   initialize: ->
     this.options.usercast.on('change', @render, this)
+    current_page = 1
 
   render: ->
     $(@el).html(@template(usercast: this.options.usercast))
-    @decorateByDepth()
+    #@decorateByDepth()
     registerAudioPlayEvents()
     @registerClickEvents(this)
+    @registerShowNextPageEvent(this.options.usercast)
     this
 
   initSoundPlayer: ->
@@ -45,5 +47,24 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
         parent.html("Friend request is sent")
       )
     )
+
+  registerShowNextPageEvent: (usercast)->
+
+    #$(window).scroll ->
+      #next_page = usercast.get("page_number") + 1
+      #if $("div.mention-list").data("page_state") == "last_page"
+        #isItLastPage = true
+      #else
+        #isItLastPage = false
+      #if !isItLastPage && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+        #context = this
+        #$.ajax(url: "/usercasts/#{usercast.get('id')}.json?page=#{next_page}", 
+          #context: this,
+          #dateType: 'json',
+          #success: (data)->
+          #if usercast.get('mentions')
+            #$("div.mention-list").append(JST['usercasts/_mention'](usercast: usercast))
+            #next_page
+        #)
 
 

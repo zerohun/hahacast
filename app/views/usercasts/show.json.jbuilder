@@ -1,4 +1,9 @@
 json.(@usercast, :id)
+if @page_number
+  json.page_number @page_number
+else
+  json.page_number 1
+end
 if current_user
   json.current_user do |json|
     json.(current_user, :id)
@@ -23,4 +28,6 @@ end
 json.user do |json|
   json.(@usercast.user, :id, :name)
 end
-json.mentions Mention.sort_by_ancestry(Mention.paginate_by_root_nodes(@usercast.mentions.includes(:user).order("updated_at"), @page_number)), :id, :file, :depth, :created_at, :user_name, :user_image
+#json.mentions Mention.sort_by_ancestry(Mention.paginate_by_root_nodes(@usercast.mentions.includes(:user).order("updated_at"), @page_number)), :id, :file, :depth, :created_at, :user_name, :user_image
+
+json.mentions Mention.sort_by_ancestry(@usercast.mentions.includes(:user).order("created_at DESC")), :id, :file, :depth, :created_at, :user_name, :user_image
