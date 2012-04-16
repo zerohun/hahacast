@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :authconnections
   has_many :usercasts
+  has_many :notifiablization
+  has_many :notifications, :through => :notifiablization
   has_one :profile
   after_create :create_usercast
 
@@ -41,8 +43,12 @@ class User < ActiveRecord::Base
   end
 
   def matched_friends
-    self.friends.includes(:friendships).where("friendships.matched=?", true).all +
-      self.inverse_friends.includes(:friendships).where("friendships.matched=?", true)
+    (self.friends.includes(:friendships).includes(:profile).where("friendships.matched=?", true).all +
+      self.inverse_friends.includes(:friendships).includes(:profile).where("friendships.matched=?", true)).uniq!
+  end
+
+  def received_friend_requests
+    self.inverse_friends.includes(:friendships).includes(:profile).where("friendships.matched is NULL").all
   end
 
   private

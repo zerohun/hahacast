@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307134831) do
+ActiveRecord::Schema.define(:version => 20120412155242) do
 
   create_table "authconnections", :force => true do |t|
     t.string   "access_token"
@@ -45,9 +45,31 @@ ActiveRecord::Schema.define(:version => 20120307134831) do
     t.integer  "usercast_id"
   end
 
+  create_table "new_users", :id => false, :force => true do |t|
+    t.integer  "new_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "news", :force => true do |t|
     t.integer  "informable_id"
     t.string   "informable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "notifiablizations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -87,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120307134831) do
     t.string   "facebook_uid"
     t.string   "twitter_uid"
     t.string   "authentication_token"
+    t.integer  "profile_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

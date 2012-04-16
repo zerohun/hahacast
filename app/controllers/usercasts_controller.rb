@@ -4,9 +4,10 @@ class UsercastsController < ApplicationController
   end
 
   def show
+    @page_number = params[:page]
     @usercast = Usercast.where(:id => params[:id]).first
     @user = @usercast.user
 
-    @mentions = @usercast.tree_sorted_mentions
+    #@mentions = @usercast.tree_sorted_mentions
   end
 end

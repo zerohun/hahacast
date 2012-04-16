@@ -27,7 +27,14 @@ class MentionsController < ApplicationController
     @mention = current_user.mentions.build(params[:mention])
     authorize_create_mention!(@mention.usercast)
     if @mention.save
-      @mention.create_new!
+      new = @mention.create_new!
+      @mention.user.matched_friends.each do |friend|
+        friend.news << new
+      end
+      @mention.usercast.user.matched_friends.each do |friend|
+        friend.news << new
+      end
+
       redirect_to @mention.usercast, :notice => "Successfully created mention."
     else
       render :action => 'new'

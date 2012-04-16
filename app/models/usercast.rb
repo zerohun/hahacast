@@ -10,4 +10,5 @@ class Usercast < ActiveRecord::Base
     end
     sorted_mentions
   end
+
 end

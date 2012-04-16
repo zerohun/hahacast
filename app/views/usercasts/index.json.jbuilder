@@ -4,4 +4,3 @@ json.(@usercasts) do |json, usercast|
   json.user_name usercast.user.name
   json.user_id usercast.user.id
 end
-

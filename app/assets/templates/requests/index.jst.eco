@@ -1,0 +1,18 @@
+<H1>Friend requests</H1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    <% for request in @requests.models: %>
+      <tr>
+        <td data-friend_id="<%= request.get('id') %>">
+          <a href="#usercasts/<%= request.get('usercast_id') %>"><%= request.get("name") %></a> 
+          want to be your friend
+          <a href="#" class="btn friendAcceptButton">Accept</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

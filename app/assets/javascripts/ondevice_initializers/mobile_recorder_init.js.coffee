@@ -1,23 +1,32 @@
-mediaPlayer = null
-playInterval = null
 @registerAudioRecordingEvents = ->
   if $("#audioRecorder").length > 0
-    #    alert "play!"
+    $(".audioUploadButton").hide()
     currentPlaying = 0
     $(".audioRecordButton").click((event)->
-      # alert "play button"
-      src = "myrecording.3gp"
-      mediaRec = new Media(src, onSuccess, onError)
+
+      $(".audioUploadButton").hide()
+      $("#message").html("just clicked")
+      alert  CONFIG["AUDIO_FILE_NAME"] 
+      file_name = CONFIG["AUDIO_FILE_NAME"] 
+      $("#message").html(file_name)
+      soundDuration = CONFIG["SOUND_DURATION"] 
+#      $("#message").html("before init")
+      mediaRec = new Media(file_name, onSuccess, onError)
+      $("#message").html("before_start")
       mediaRec.startRecord()
+      $(".bar").css("width", "0%")
       recTime = 0
+      oneStepWidth = 100 / (soundDuration * 100)
       recInterval = setInterval(->
         recTime = recTime + 1
-        $("#count").html("#{recTime}")
-        if recTime >= 5
+        $("#count").html("#{recTime/100}")
+        $(".bar").css("width", "#{(recTime * oneStepWidth)}%")
+        if recTime >= soundDuration * 100
           clearInterval recInterval
           mediaRec.stopRecord()
-          alert "record stop"
-      , 1000)  
+          $("#message").html("record stop") 
+          $(".audioUploadButton").fadeIn()
+      , 1)  
     )
     $(".audioUploadButton").click((event)->
 
@@ -36,21 +45,24 @@ playInterval = null
       $("#message").html(params.authenticity_token)
       options.params = params
       ft = new FileTransfer()
-      ft.upload("/mnt/sdcard/myrecording.3gp", "http://hahacast.herokuapp.com/usercasts/1/mentions", 
-        onUploadSuccess, onUploadFail, options) 
-
+      alert "http://192.168.43.170:3000/usercasts/#{gon.usercast_id}/mentions"
+      ft.upload("/mnt/sdcard/#{options.fileName}", "http://192.168.43.170:3000/usercasts/#{gon.usercast_id}/mentions", onUploadSuccess, onUploadFail, options) 
       $("#message").html("after upload")
 
     )
 
 @onSuccess = ->
-  #  console.log "recordAudio():Audio Success"
-  #alert "success"
+  $("#message").html("recordAudio():Audio Success")
+
+
+
   
 @onError = (error) ->
   #  console.log "code: " + error.code + "\n" + "message: " + error.message + "\n"
 
 @onUploadSuccess = ->
   $("#message").html("upload success")
+  window.location = "/#usercasts/#{gon.usercast_id}"
+  
 @onUploadFail = (error)->
   alert "[upload fail]#{error.code}"

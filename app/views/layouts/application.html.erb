@@ -20,6 +20,8 @@
               <li><%= link_to current_user.email, user_configuration_path(current_user) %></li>
               <li><%= link_to "Logout", sign_out_path %></li>
               <li><%= link_to "My channel", "#usercasts/#{current_user.usercasts.first.id}" %></li>
+              <li><%= link_to "Notifications", "#notifications"%></li>
+              <li><%= link_to "Friends", "#friends" %></li>
             <% else %>
               <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
               <li><%= link_to "Sign in", new_user_session_path %></li>

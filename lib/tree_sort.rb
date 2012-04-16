@@ -8,11 +8,10 @@ module TreeSort
       cursor = stack.last
       result << cursor
       if cursor.has_children?
-        stack = stack + cursor.children.reverse
+        stack = stack + cursor.children
       end
       stack.delete(cursor)
     end while stack.size > 0
     result
   end
-
 end

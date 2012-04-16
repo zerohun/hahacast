@@ -6,9 +6,9 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
 
   render: ->
     $(@el).html(@template(usercast: this.options.usercast))
-#    @initSoundPlayer()
-    @indentByDepth()
+    @decorateByDepth()
     registerAudioPlayEvents()
+    @registerClickEvents(this)
     this
 
   initSoundPlayer: ->
@@ -24,10 +24,26 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
       player.playFirst() 
 
 
-  indentByDepth: ->
+  decorateByDepth: ->
     $("div.playlist").each((index,element)->
       margin = Number($(element).data("depth")) * 20
       $(element).css("margin-left", "#{margin}px")
+    )
+
+  registerClickEvents: (context)->
+    $("#friendRequestButton").click((event)->
+      parent = $(this).parent()
+      $(this).hide()
+
+      parent.html("<img src='/loading.gif' />")
+      usercast = context.options.usercast
+      event.preventDefault()
+      dataToSend = {}
+      dataToSend["friend_id"] = usercast.get('user')["id"]
+      dataToSend["user_id"] = usercast.get('current_user')["id"]
+      $.post("/friendships", dataToSend, (data, textStatus)->
+        parent.html("Friend request is sent")
+      )
     )
 
 

@@ -4,8 +4,10 @@ class ProfilesController < ApplicationController
   #
   skip_before_filter :assure_to_have_a_profile
   before_filter :authenticate_user!
+  before_filter :find_current_user_profile, :only => :show
 
   def index
+    @profiles = Profile.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @profiles }
@@ -39,12 +41,14 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = current_user.build_profile(params[:profile])
+    #current_user.profile_id = @profile.id
+    #current_user.save!
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        format.html { redirect_to '/', notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: 'Profile is not created'}
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end

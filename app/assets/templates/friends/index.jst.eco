@@ -1,0 +1,17 @@
+<a href="/#requests">Requests</a>
+<H1>Friend list</H1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    <% for friend in @friends.models: %>
+      <tr>
+        <td>
+          <a href="#usercasts/<%= friend.get('usercast_id') %>"><%= friend.get("name") %></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

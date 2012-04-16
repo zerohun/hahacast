@@ -7,13 +7,10 @@ class Hahacast.Routers.Mentions extends Backbone.Router
   initialize: ->
     @collection = new Hahacast.Collections.Mentions()
     @collection.fetch()
-    
 
   index: ->
     view = new Hahacast.Views.MentionsIndex(collection: @collection)
     $('#main-content').html(view.render().el)
-
-    
 
   show: (id)->
     alert id

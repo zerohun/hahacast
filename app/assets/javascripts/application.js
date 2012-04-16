@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require global_config
 //= require hahacast
 //= require cordova-1.5.0.js
 //= require_tree ../templates

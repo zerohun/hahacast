@@ -1,12 +1,23 @@
 <% if @usercast.get('user'): %>
   <H1 class="page-title"><%= @usercast.get('user').name %>'s Channel</H1>
 <% end %>
-<% alert @usercast.get('id') %>
-<a href="usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
+<a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
+
+<div class="friend_state">
+  <% if @usercast.get('friend_state') == 1: %>
+      Friend
+  <% end %>
+  <% if @usercast.get('friend_state') == 2: %>
+      Sent friend request
+  <% end %>
+  <% if @usercast.get('friend_state') == 3: %>
+     <a href="#" id="friendRequestButton" class="btn" >Add as friend</a>
+  <% end %>
+</div>
+
 <div class="mention-list">
   <% if @usercast.get('mentions'): %>
     <% count = 0 %>
-
     <% for mention in @usercast.get('mentions'): %>
       <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>">
         <button class="btn audioPlayButton"> <%= mention.user_name %> at <%= mention.created_at %>&nbsp;&nbsp;PLAY</button>

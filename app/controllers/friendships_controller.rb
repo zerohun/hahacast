@@ -15,12 +15,15 @@ class FriendshipsController < ApplicationController
     friendship = user.friendships.build(:friend_id => params[:friend_id])
     if friendship.matched_inverse.present?
       friendship.matched = true
-      friendship.matched_inverse.matched = true
-      friendship.matched_inverse.save
+      inverse_friendship = friendship.matched_inverse
+      inverse_friendship.matched = true
+      inverse_friendship.save
     end
-
     if friendship.save 
-      friendship.create_new!
+      notification = friendship.create_notification!
+      notification.users << friendship.user
+      notification.users << friendship.friend
+
       flash[:message] = "friend request is made successfully"
     else
       flash[:message] = "friend request is failed"
