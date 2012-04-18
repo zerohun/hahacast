@@ -5,9 +5,8 @@ class Mention < ActiveRecord::Base
   validates :file,  :presence => true
   belongs_to :user
   belongs_to :usercast
+  has_one :notification, :as => :notifiable, :dependent => :destroy
 
-  has_many :notifiablization
-  has_many :notifications, :through => :notifiablization
   def user_name
     self.user.name
   end

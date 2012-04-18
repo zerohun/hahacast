@@ -1,7 +1,8 @@
 <% if @usercast.get('user'): %>
   <H1 class="page-title"><%= @usercast.get('user').name %>'s Channel</H1>
+  <a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
 <% end %>
-<a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
+
 
 <div class="friend_state">
   <% if @usercast.get('friend_state') == 1: %>

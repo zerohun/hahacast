@@ -46,7 +46,7 @@
       options.params = params
       ft = new FileTransfer()
       #alert "http://192.168.43.170:3000/usercasts/#{gon.usercast_id}/mentions"
-      ft.upload("/mnt/sdcard/#{options.fileName}", "http://hahacast.herokuapp.com/usercasts/#{gon.usercast_id}/mentions", onUploadSuccess, onUploadFail, options) 
+      ft.upload("/mnt/sdcard/#{options.fileName}", "http://192.168.35.180:3000/usercasts/#{gon.usercast_id}/mentions", onUploadSuccess, onUploadFail, options) 
       #$("#message").html("after upload")
 
     )
@@ -62,4 +62,4 @@
   window.location = "/#usercasts/#{gon.usercast_id}"
   
 @onUploadFail = (error)->
-  #alert "[upload fail]#{error.code}"
+  $("#message").html("[upload fail]#{error.code}")
