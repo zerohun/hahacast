@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
 
   def name
     profile = self.profile
+    if profile.blank?
+      return ""
+    end
     profile.first_name + " " + profile.last_name
   end
 
