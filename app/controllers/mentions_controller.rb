@@ -28,11 +28,17 @@ class MentionsController < ApplicationController
     authorize_create_mention!(@mention.usercast)
     if @mention.save
       notification = @mention.create_notification!
-      @mention.user.matched_friends.each do |friend|
-        friend.notifications << notification
+      user_friends = @mention.user.matched_friends
+      if user_friends.present?
+        user_friends.each do |friend|
+          friend.notifications << notification
+        end
       end
-      @mention.usercast.user.matched_friends.each do |friend|
-        friend.notifications << notification
+      usercast_friends = @mention.usercast.user.matched_friends
+      if usercast_friends.present?
+        usercast_friends.each do |friend|
+          friend.notifications << notification
+        end
       end
       redirect_to @mention.usercast, :notice => "Successfully created mention."
     else
