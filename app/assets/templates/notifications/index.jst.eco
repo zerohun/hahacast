@@ -10,14 +10,12 @@
         <td>
           <% if notification.get('type') == 'Friendship': %>
             <a href="/#usercasts/<%= notification.get('usercast_id') %>"><%= notification.get('user_name')%></a>
-
             is friend with 
             <a href="/#usercasts/<%= notification.get('friendcast_id') %>"><%= notification.get('friend_name')%></a>
           <% end %>
-
           <% if notification.get('type') == 'Mention': %>
             <%= notification.get('user_name') %> spoke on 
-            <a href="/usercasts/<%= notification.get('usercast_id') %>"><%= notification.get('usercast_owner_name')%></a>
+            <a href="/#usercasts/<%= notification.get('usercast_id') %>"><%= notification.get('usercast_owner_name')%></a>
           <% end %>
         </td>
       </tr>

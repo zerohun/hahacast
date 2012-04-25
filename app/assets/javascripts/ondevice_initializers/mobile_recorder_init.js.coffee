@@ -1,8 +1,15 @@
+window.mediaRec = null
 @registerAudioRecordingEvents = ->
   if $("#audioRecorder").length > 0
+    $(".audioRecordStopButton").hide()
     $(".audioUploadButton").hide()
     currentPlaying = 0
+
     $(".audioRecordButton").click((event)->
+
+      $(".audioRecordStopButton").show()
+
+      $(".audioRecordButton").hide()
       $(".audioUploadButton").hide()
       $("#message").html("Recording")
       #$("#message").html("just clicked")
@@ -11,7 +18,7 @@
       #$("#message").html(file_name)
       soundDuration = CONFIG["SOUND_DURATION"] 
 #      $("#message").html("before init")
-      mediaRec = new Media(file_name, onSuccess, onError)
+      window.mediaRec = new Media(file_name, onSuccess, onError)
       $("#message").html("before_start")
       mediaRec.startRecord()
       $(".bar").css("width", "0%")
@@ -27,8 +34,18 @@
           $("#message").html("record stop") 
           $(".audioUploadButton").fadeIn()
       , 1)  
+
+      $(".audioRecordStopButton").unbind('click')
+      $(".audioRecordStopButton").click((event)->
+        $(".audioRecordButton").show()
+        $(".audioUploadButton").show()
+        $(this).hide()
+        clearInterval recInterval
+        mediaRec.stopRecord()
+      )
     )
     $(".audioUploadButton").click((event)->
+      $(this).hide()
       $("#message").html("Uploading...")
       options = new FileUploadOptions()
       options.fileKey = "mention[file]"
@@ -46,7 +63,7 @@
       options.params = params
       ft = new FileTransfer()
       #alert "http://192.168.43.170:3000/usercasts/#{gon.usercast_id}/mentions"
-      ft.upload("/mnt/sdcard/#{options.fileName}", "http://hahacast.herokuapp.com/usercasts/#{gon.usercast_id}/mentions", onUploadSuccess, onUploadFail, options) 
+      ft.upload("/mnt/sdcard/#{options.fileName}", "http://192.168.35.6:3000/usercasts/#{gon.usercast_id}/mentions", onUploadSuccess, onUploadFail, options) 
       #$("#message").html("after upload")
 
     )

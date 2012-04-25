@@ -7,11 +7,13 @@
   <tbody>
     <% for request in @requests.models: %>
       <tr>
-        <td data-friend_id="<%= request.get('id') %>">
-          <a href="#usercasts/<%= request.get('usercast_id') %>"><%= request.get("name") %></a> 
-          want to be your friend
-          <a href="#" class="btn friendAcceptButton">Accept</a>
-        </td>
+        <% if request.get('usercast_id'): %>
+          <td data-friend_id="<%= request.get('id') %>">
+            <a href="#usercasts/<%= request.get('usercast_id') %>"><%= request.get("name") %></a> 
+            wants to be your friend
+            <a href="#" class="btn friendAcceptButton">Accept</a>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
