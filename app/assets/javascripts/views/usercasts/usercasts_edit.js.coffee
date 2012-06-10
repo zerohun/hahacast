@@ -1,5 +1,5 @@
-class Hahacast.Views.UsercastsShow extends Backbone.View
-  template: JST['usercasts/show']
+class Hahacast.Views.UsercastsEdit extends Backbone.View
+  template: JST['usercasts/edit']
 
   initialize: ->
     this.options.usercast.on('change', @render, this)
@@ -10,21 +10,12 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
     #@decorateByDepth()
     registerAudioPlayEvents()
     @registerClickEvents(this)
-    @registerShowNextPageEvent(this.options.usercast)
-    console.log "state:" + window.playState
-    if window.playState == "playing"
-      console.log "it's playing"
-      $(@el).find(".play-btn").hide()
-      $(@el).find(".stop-btn").show()
 
-    if $(@el).find("div#mention-param").length > 0
-      mentionId = $("div#mention-param").data("mention_id")
-      window.index = Number($(".playlist[data-mention_id=#{mentionId}]").attr("id"))
-      console.log "new index :" + window.index
-      $(@el).find(".play-btn").trigger("click")
+    @registerShowNextPageEvent(this.options.usercast)
+    if window.playState == "playing"
+      $(@el).find("div##{window.index}.visible-list").addClass("playing")
     else
-      window.index = 0
-      $(@el).find(".play-btn").trigger("click")
+      $(@el).find("div##{window.index}.visible-list").css("background-color", "#CCC")
     this
 
   initSoundPlayer: ->

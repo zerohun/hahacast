@@ -3,11 +3,14 @@ class UsercastsController < ApplicationController
     @usercasts = Usercast.all 
   end
 
-  def show
-    @page_number = params[:page]
+  def edit
     @usercast = Usercast.where(:id => params[:id]).first
     @user = @usercast.user
+  end
 
-    #@mentions = @usercast.tree_sorted_mentions
+  def show
+    @mention_id = params[:mention_id] || nil
+    @usercast = Usercast.where(:id => params[:id]).first
+    @user = @usercast.user
   end
 end

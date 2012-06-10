@@ -9,7 +9,7 @@ $navbarLinkColor: #eee;
 
 @import "bootstrap";
 
-body { padding-top: 60px; }
+body { padding-top: 80px; }
 .navbar {background-color: black;}
 
 .progress .bar {
@@ -29,3 +29,123 @@ body { padding-top: 60px; }
 .navbar .brand {
   color: #FAFFB8;
 }
+.play-btn{
+  width: 250px;
+  height: 100px;
+  font-size: 70px;
+  padding-top: 70px;
+}
+.stop-btn{
+  width: 250px;
+  height: 100px;
+  font-size: 70px;
+  padding-top: 70px;
+}
+.prev-btn{
+  width: 110px;
+  height: 100px;
+  font-size: 35px;
+  padding-top: 70px;
+}
+
+.next-btn{
+  width: 110px;
+  height: 100px;
+  font-size: 35px;
+  padding-top: 70px;
+}
+
+
+.answer-btn{
+  width: 110px;
+  height: 50px;
+  font-size: 20px;
+  padding-top: 70px;
+}
+
+.record-btn{
+  width: 110px;
+  height: 50px;
+  font-size: 20px;
+  padding-top: 70px;
+}
+.playlist-profile-icon{
+  width: 50px;
+  height: 50px;
+
+}
+.audioPlayButton{
+  width: 120px;
+  height: 40px;
+}
+
+.friend_state{
+  margin-top: 30px;
+}
+.profile-button-group{
+}
+.play_button.group{
+}
+
+div.visible-list{ 
+  padding: 5px;
+  padding-top: 10px;
+  margin: 10px;
+  height: 200px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+
+  /* firefox's individual border radius properties */
+  -moz-border-radius-topleft:15px; /* top left corner */
+  -moz-border-radius-topright:50px; /* top right corner */
+  -moz-border-radius-bottomleft:15px; /* bottom left corner */
+  -moz-border-radius-bottomright:50px; /* bottom right corner */
+  -moz-border-radius:10px 15px 15px 10px;  /* shorthand topleft topright bottomright bottomleft */
+
+  /* webkit's individual border radius properties */
+  -webkit-border-top-left-radius:15px; /* top left corner */
+  -webkit-border-top-right-radius:50px; /* top right corner */
+  -webkit-border-bottom-left-radius:15px; /* bottom left corner */
+  -webkit-border-bottom-right-radius:50px; /* bottom right corner */
+}
+
+div.invisible-list{
+  width: 0px;
+  height: 0px;
+
+}
+div.playlist-edit{
+
+}
+
+
+div.mention-list{
+  margin-top: 50px;
+}
+
+div.playing{
+  background-color: #99CCFF;
+}
+div.mention-list{
+  height: 0px;
+  border-color: white;
+}
+
+.audioPlayButton{
+  width: 200px;
+}
+
+.user-picture{
+  border-style: solid;
+  border-color: grey;
+  border-width: 2px;
+  width: 30px;
+  height: 30px;
+  top-margin: 10px;
+}
+

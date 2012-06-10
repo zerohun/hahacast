@@ -17,6 +17,7 @@
 //= require backbone
 //= require global_config
 //= require hahacast
+//= require stopgap
 //= require cordova-1.5.0.js
 //= require_tree ../templates
 //= require_tree ./models
@@ -31,6 +32,8 @@
 //= require bootstrap_1
 
 $(document).ready(function(){
+
+
    // Your code here
  });
 

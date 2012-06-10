@@ -22,12 +22,6 @@ ActiveRecord::Schema.define(:version => 20120412155242) do
     t.integer  "user_id"
   end
 
-  create_table "connections", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "status"
-  end
-
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -43,20 +37,6 @@ ActiveRecord::Schema.define(:version => 20120412155242) do
     t.string   "ancestry"
     t.integer  "user_id"
     t.integer  "usercast_id"
-  end
-
-  create_table "new_users", :id => false, :force => true do |t|
-    t.integer  "new_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "news", :force => true do |t|
-    t.integer  "informable_id"
-    t.string   "informable_type"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
   end
 
   create_table "notifiablizations", :force => true do |t|

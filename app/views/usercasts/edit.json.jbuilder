@@ -1,7 +1,4 @@
 json.(@usercast, :id)
-if @mention_id
-  json.mention_id @mention_id
-end
 if @page_number
   json.page_number @page_number
 else

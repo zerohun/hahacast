@@ -1,8 +1,13 @@
 <% if @usercast.get('user'): %>
-  <H1 class="page-title"><%= @usercast.get('user').name %>'s Channel</H1>
-  <a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn"> Speak </a>
-<% end %>
+  <div id="usercast_info" data-usercast_id="<%= @usercast.get('id') %>">
+  </div>
 
+<% if @usercast.get('mention_id'): %>
+  <div id="mention-param" data-mention_id="<%= @usercast.get('mention_id') %>">
+  </div>
+<% end %>
+<div id="current-playing">
+</div>
 
 <div class="friend_state">
   <% if @usercast.get('friend_state') == 1: %>
@@ -15,15 +20,27 @@
      <a href="#" id="friendRequestButton" class="btn" >Add as friend</a>
   <% end %>
 </div>
+  <H1 class="page-title"><%= @usercast.get('user').name %>'s Channel</H1>
+  <span id="play-status" class="label">
+  </span>
+  <div><a href="#" class="btn btn-primary play-btn">Play</a></div>
+  <div><a href="#" class="btn btn-primary stop-btn">Stop</a></div>
+  <div>
+  <a href="#" class="btn prev-btn">Prev</a>
+  <a href="#" class="btn next-btn">Next</a>
+
+  <a href="#" class="btn answer-btn">Answer this</a>
+  <a href="/usercasts/<%= @usercast.get('id') %>/mentions/new" class="btn record-btn">Speak New</a>
+  </div>
+<% end %>
+
+
 
 <div class="mention-list" data-page_state="">
   <% if @usercast.get('mentions'): %>
     <% count = 0 %>
     <% for mention in @usercast.get('mentions'): %>
-      <div class="playlist" id="<%= count.toString() %>" data-file="<%= mention.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>">
-        <button class="btn audioPlayButton"> <%= mention.user_name %> at <%= mention.created_at %>&nbsp;&nbsp;PLAY</button>
-        <a class="btn" href="/usercasts/<%= @usercast.get('id') %>/mentions/new?parent_id=<%= mention.id %>"> Reply </a>
-        <button class="btn"> Delete </button>
+      <div class="playlist invisible-list" id="<%= count %>" data-usercast_id = "<%= mention.usercast_id %>" data-mention_id="<%= mention.id %>" id="<%= mention.id %>" data-file="<%= mention.file.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>" data-picture="<%= mention.user_image.url %>" data-created_at="<%= mention.created_at %>" >
       </div>
       <% count++ %>
     <% end %>

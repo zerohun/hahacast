@@ -15,7 +15,7 @@
           <% end %>
           <% if notification.get('type') == 'Mention': %>
             <%= notification.get('user_name') %> spoke on 
-            <a href="/#usercasts/<%= notification.get('usercast_id') %>"><%= notification.get('usercast_owner_name')%></a>
+            <a href="/#usercasts/<%= notification.get('usercast_id')%>?mention_id=<%=notification.get('mention_id') %>"><%= notification.get('usercast_owner_name')%>'s channel</a>
           <% end %>
         </td>
       </tr>
