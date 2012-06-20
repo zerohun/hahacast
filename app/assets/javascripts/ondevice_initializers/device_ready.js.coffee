@@ -1,6 +1,6 @@
 
 @onDeviceReady =->
-  registerAudioRecordingEvents()
+  @registerAudioRecordingEvents()
   #registerAudioPlayEvents()
 
 

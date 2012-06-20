@@ -17,18 +17,16 @@
 //= require backbone
 //= require global_config
 //= require hahacast
-//= require stopgap
 //= require cordova-1.5.0.js
+//= require bootstrap
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree .
 //= require_tree ./onready_initializers
 //= require_tree ./ondevice_initializers
 //= require_tree ./lib
-//= require bootstrap
 //= require bootstrap_1
 
 $(document).ready(function(){
