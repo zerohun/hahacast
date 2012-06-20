@@ -8,4 +8,8 @@ class Hahacast.Views.UsercastsIndex extends Backbone.View
 
   render: ->
       $(@el).html(@template(usercasts: @collection))
+      $(".nav-collapse").removeClass('in')
+      $(".nav-collapse").css("height", "0px")
+    
       this
+

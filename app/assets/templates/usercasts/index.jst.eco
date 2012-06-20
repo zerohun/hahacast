@@ -9,7 +9,7 @@
     <% for usercast in @usercasts.models: %>
       <tr>
         <td>
-          <a href="#usercasts/<%= usercast.get('id') %>"><%= usercast.get("user_name") %></a>
+          <a class="channel-list" href="#usercasts/<%= usercast.get('id') %>"><%= usercast.get("user_name") %></a>
         </td>
       </tr>
     <% end %>

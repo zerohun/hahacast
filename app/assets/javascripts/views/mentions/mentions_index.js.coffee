@@ -14,6 +14,9 @@ class Hahacast.Views.MentionsIndex extends Backbone.View
       @countData.currentPlaying = 0
       this.$('#firstSound').attr('src', sound_url)
       this.$('#player').bind('ended', {countData: @countData, collection: @collection},@playNextSound)
+    $(".nav-collapse").removeClass('in')
+    $(".nav-collapse").css("height","0px")
+    
     this
 
   playNextSound: (event)->

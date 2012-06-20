@@ -33,6 +33,13 @@
 
 $(document).ready(function(){
 
+  $(".menu-item").click(function(){
+    $(".nav-collapse").removeClass('in');
+    $(".nav-collapse").css("height","0px");
+    
+  })
+
+
 
    // Your code here
  });

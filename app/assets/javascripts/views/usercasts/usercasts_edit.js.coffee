@@ -16,6 +16,11 @@ class Hahacast.Views.UsercastsEdit extends Backbone.View
       $(@el).find("div##{window.index}.visible-list").addClass("playing")
     else
       $(@el).find("div##{window.index}.visible-list").css("background-color", "#CCC")
+
+
+    $(".nav-collapse").removeClass('in')
+    $(".nav-collapse").css("height", "0px")
+    
     this
 
   initSoundPlayer: ->

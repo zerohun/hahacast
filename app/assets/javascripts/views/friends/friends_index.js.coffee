@@ -8,4 +8,7 @@ class Hahacast.Views.FriendsIndex extends Backbone.View
 
   render: ->
       $(@el).html(@template(friends: @collection))
+      $(".nav-collapse").removeClass('in')      
+      $(".nav-collapse").css("height", "0px")
       this
+

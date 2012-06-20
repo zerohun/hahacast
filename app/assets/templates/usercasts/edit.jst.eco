@@ -24,7 +24,7 @@
       <div class="playlist visible-list" id="<%= count %>" data-mention_id="<%= mention.id %>" data-file="<%= mention.file.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>">
         <div class="profile-button-group">
         <a class="userProfileLink btn" href="/#usercasts/<%= mention.usercast_id %>">
-        <img src="<%= mention.user_image.url %>" class="user-picture" />
+        <img src="<%= mention.user_image %>" class="user-picture" />
         <br><%= mention.user_name %></br>
         </a>
         </div>

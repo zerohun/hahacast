@@ -9,6 +9,10 @@ class Hahacast.Views.RequestsIndex extends Backbone.View
   render: ->
       $(@el).html(@template(requests: @collection))
       @registerClickEvents(this)
+
+
+      $(".nav-collapse").removeClass('in')
+      $(".nav-collapse").css("height", "0px")
       this
 
   registerClickEvents: (context)->

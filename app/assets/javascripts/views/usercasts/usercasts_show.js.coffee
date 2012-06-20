@@ -21,11 +21,15 @@ class Hahacast.Views.UsercastsShow extends Backbone.View
       mentionId = $("div#mention-param").data("mention_id")
       window.index = Number($(".playlist[data-mention_id=#{mentionId}]").attr("id"))
       console.log "new index :" + window.index
-      $(@el).find(".play-btn").trigger("click")
     else
       window.index = 0
       $(@el).find(".play-btn").trigger("click")
+
+    $(".nav-collapse").removeClass('in')
+    $(".nav-collapse").css("height", "0px")
+
     this
+
 
   initSoundPlayer: ->
     audioPlayerElement = this.$("audio#player")

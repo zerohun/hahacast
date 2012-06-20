@@ -14,6 +14,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if current_user.present?
         current_user.facebook_uid = env["uid"]
         current_user.authconnections.build(:provider => "facebook", :uid => env["uid"], :access_token => env["credentials"]["token"])
+        logger.info "picture_info : " "http://graph.facebook.com/#{env['uid']}/picture"
+        if current_user.profile.blank?
+          current_user.create_profile(:picture => env["info"]["image"],
+                                      :first_name =>env["info"]["first_name"],
+                                      :last_name => env["info"]["last_name"]
+                                     )
+        elsif
+
+          current_user.profile.picture = env["info"]["image"]
+          current_user.profile.first_name = env["info"]["first_name"]
+          current_user.profile.last_name = env["info"]["last_name"]
+          current_user.profile.save
+        end
         current_user.save!
         redirect_to '/'
   #     session["devise.facebook_data"] = request.env["omniauth.auth"]

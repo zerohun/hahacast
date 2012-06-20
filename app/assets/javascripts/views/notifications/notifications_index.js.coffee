@@ -8,4 +8,7 @@ class Hahacast.Views.NotificationsIndex extends Backbone.View
 
   render: ->
       $(@el).html(@template(notifications: @collection))
+      $(".nav-collapse").removeClass('in')
+      $(".nav-collapse").css("height", "0px")
+
       this

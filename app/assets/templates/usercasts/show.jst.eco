@@ -40,7 +40,7 @@
   <% if @usercast.get('mentions'): %>
     <% count = 0 %>
     <% for mention in @usercast.get('mentions'): %>
-      <div class="playlist invisible-list" id="<%= count %>" data-usercast_id = "<%= mention.usercast_id %>" data-mention_id="<%= mention.id %>" id="<%= mention.id %>" data-file="<%= mention.file.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>" data-picture="<%= mention.user_image.url %>" data-created_at="<%= mention.created_at %>" >
+      <div class="playlist invisible-list" id="<%= count %>" data-usercast_id = "<%= mention.usercast_id %>" data-mention_id="<%= mention.id %>" id="<%= mention.id %>" data-file="<%= mention.file.file.url %>" data-user-id="<%= mention.user_id %> " data-depth="<%= mention.depth %>" data-picture="<%= mention.user_image%>" data-created_at="<%= mention.created_at %>" >
       </div>
       <% count++ %>
     <% end %>
