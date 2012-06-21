@@ -37,7 +37,7 @@ window.usercastId = -1
   ")
 
   mentionId = findMentionIdByIndex(window.index)
-  $(".answer-btn").attr("href", "/usercasts/#{mentionUsercastId}/mentions/new?parent_id = #{mentionId}")
+  $(".answer-btn").attr("href", "/usercasts/#{mentionUsercastId}/mentions/new?parent_id=#{mentionId}")
 
 @registerAudioPlayEvents = ->
   if $("#audioPlayer").length > 0
@@ -49,6 +49,8 @@ window.usercastId = -1
       mentionId = $parent.data("mention_id")
       window.usercastId = $("div#usercast_info").data("usercast_id")
       window.location.href = "/#usercasts/#{window.usercastId}?mention_id=#{mentionId}"
+      playList()
+
     )
     $(".play-btn").click((event)->
       event.preventDefault()
