@@ -33,4 +33,5 @@ json.user do |json|
 end
 #json.mentions Mention.sort_by_ancestry(Mention.paginate_by_root_nodes(@usercast.mentions.includes(:user).order("updated_at"), @page_number)), :id, :file, :depth, :created_at, :user_name, :user_image
 
-json.mentions Mention.sort_by_ancestry(@usercast.mentions.includes(:user).order("created_at")), :id, :file, :depth, :created_at, :user_name, :user_image, :usercast_id
+#json.mentions Mention.sort_by_ancestry(@usercast.mentions.includes(:user).order("created_at")), :id, :file, :depth, :created_at, :user_name, :user_image, :usercast_id
+json.mentions @usercast.tree_sorted_mentions, :id, :file, :depth, :created_at, :user_name, :user_image
