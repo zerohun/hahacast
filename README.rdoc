@@ -1,1 +1,4 @@
 SNS with recording voice.
+
+
+Phonegap based
